@@ -1,0 +1,68 @@
+﻿@model ML.Sucursal
+@{
+    ViewData["Title"] = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Form", "Sucursal", FormMethod.Post, new { enctype = "multipart/form-data"}))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.IdSucursal, new { @class = "hidden"})
+                            @Html.TextBoxFor(model => model.IdSucursal, new { @class = "hidden form-control", autocomplete = "off"  })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.Nombre)
+                            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @id = "nombre" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.Direccion)
+                            @Html.TextBoxFor(model => model.Direccion, new { @class = "form-control", @id = "direccion" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.NumEmpleados)
+                            @Html.TextBoxFor(model => model.NumEmpleados, new { @class = "form-control", @id = "fechamodificacion" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.NumAutos)
+                            @Html.TextBoxFor(model => model.NumAutos, new { @class = "form-control", @id = "numautos" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.Imagen)
+                            @Html.TextBoxFor(model => model.Imagen, new { @class = "form-control", @id = "imagen" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Empresa)
+                            @Html.DropDownListFor(model => model.Empresa.IdEmpresa, new SelectList(Model.Empresa.Empresas, "IdEmpresa", "Nombre"), "Selecciona una opción", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <input type="submit" value="Guardar" class="btn btn-success" />
+                            @Html.ActionLink("Regresar", "GetAll", "Sucursal", htmlAttributes: new { @class = "btn btn-danger" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

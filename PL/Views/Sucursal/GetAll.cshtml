@@ -1,0 +1,51 @@
+﻿@model ML.Sucursal
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-1">
+            @Html.ActionLink("Agregar", "Form", "Sucursal", htmlAttributes: new { @class = "btn btn-success" })
+        </div>
+        <br> <br />
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table>
+                <thead>
+                    <tr>
+                        <td>Editar</td>
+                        <td>IdSucursal</td>
+                        <td>NombreSucursal</td>
+                        <td>Direccion</td>
+                        <td>NumEmpleados</td>
+                        <td>NumAutos</td>
+                        <td>Imagen</td>
+                        <td>Empresa</td>
+                        <td>EmpresaNombre</td>
+                        <td>Eliminar</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (ML.Sucursal sucursal in Model.Sucursales)
+                    {
+                        <tr>
+                            <td class="text-center"><a class="btn btn-warning bi bi-pencil-fill" href="@Url.Action("Form", "Sucursal", new { IdSucursal = sucursal.IdSucursal })"></a></td>
+                            <td>@sucursal.IdSucursal</td>
+                            <td>@sucursal.Nombre</td>
+                            <td>@sucursal.Direccion</td>
+                            <td>@sucursal.NumEmpleados</td>
+                            <td>@sucursal.NumAutos</td>
+                            <td>@sucursal.Imagen</td>
+                            <td>@sucursal.Empresa.IdEmpresa</td>
+                            <td>@sucursal.Empresa.Nombre</td>
+                            <td class="text-center"><a class="btn btn-danger bi bi-trash3" href="@Url.Action("Delete", "Sucursal", new { IdSucursal = sucursal.IdSucursal })"></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
